@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const Signup = () => {
+const Signup = ({setToken}) => {
 
   const [emailInput, setEmailInput] = useState('');
   const [firstNameInput, setFirstNameInput] = useState('');
@@ -26,7 +26,7 @@ const Signup = () => {
 
 
       const user = await response.json();
-      
+      console.log(user);
       if(user.error) {  
       } else {
         setEmailInput('');

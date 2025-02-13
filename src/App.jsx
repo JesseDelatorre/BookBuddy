@@ -1,14 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import NavBar from "./NavBar.jsx";
 import BookList from "./BookList.jsx";
 import Login from './Login.jsx';
 import Signup from './Signup.jsx';
+import BookDetails from './BookDetails.jsx';
+
 
 
 const App = () => {
-  const [allBookDetails, setAllBookDetails] = useState({});
-
+  // const [allBookDetails, setAllBookDetails] = useState({});
+  const [token , setToken] = useState('');
   
 
   return (
@@ -20,9 +22,9 @@ const App = () => {
       <Routes>
         <Route path='/' element={<h2>Welcome!</h2>} />
         <Route path='/booklist' element={<BookList />} />
-        <Route path='/booklist/:id' element={<allBookDetails/>}/>
-        <Route path='/login' element={<Login />} />
-        <Route path='/signup' element={<Signup />} />
+        <Route path='/booklist/:id' element={<BookDetails/>}/>
+        <Route path='/login' element={<Login setToken={setToken}/>} />
+        <Route path='/signup' element={<Signup setToken={setToken}/>} />
       </Routes>
     </>
   )

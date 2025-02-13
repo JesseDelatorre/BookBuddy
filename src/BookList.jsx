@@ -1,8 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
+import BookDetails from './BookDetails.jsx';
+import singleBookDetails from './BookDetails.jsx';
+import { useNavigate } from 'react-router-dom';
 
 
-const BookList = (props) => {
+const BookList = () => {
   const [allBooks, setAllBooks] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getBooks = async () => {
@@ -25,7 +29,9 @@ const BookList = (props) => {
 
             return (
               <li key={singleBook.id}>
-                {singleBook.title}, {singleBook.id}
+                <h3>{singleBook.title}</h3>
+                  {/* {singleBook.id}  */}
+                  <button onClick= {()=>{navigate(`/booklist/${singleBook.id}`)}}>See Details</button>
               </li>
             )
           })
